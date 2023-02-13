@@ -22,7 +22,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: See the access token
-      run: echo "${{secrets.NPM_ACCESS_TOKEN}}"
+      run: echo "${{secrets.NPM_ACCESS_TOKEN}}" |
+        echo "Hello there"
 
     - name: Build
       run: |
