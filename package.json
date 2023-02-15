@@ -1,6 +1,6 @@
 {
   "name": "jira-daily-candidates",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "typings": "lib/main.d.ts",
   "scripts": {
     "start": "parcel ./src/index.html",
