@@ -1,11 +1,16 @@
 {
-  "source": "src/index.html",
+  "name": "jira-daily-candidates",
+  "version": "0.0.3",
+  "typings": "lib/main.d.ts",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "parcel ./src/index.html",
+    "build": "tsc --outDir lib && npm run minify",
+    "minify": "uglifyjs --compress --mangle --output lib/index.min.js -- lib/index.js"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "latest"
+    "parcel": "latest",
+    "typescript": "^4.9.5",
+    "uglify-js": "^3.17.4"
   }
 }
