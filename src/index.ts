@@ -35,6 +35,15 @@ function dragElement(element: HTMLElement) {
   element.onmousedown = dragMouseDown;
 }
 
+function handleParticipantClick(allParticipants: Array<HTMLAnchorElement>, selectedParticipant: HTMLAnchorElement) {
+  allParticipants.forEach((participant) => {
+    if (participant.classList.contains('ghx-active')) {
+      participant.click();
+    }
+  })
+  selectedParticipant.click();
+}
+
 const list = document.createElement('div');
 list.setAttribute(
   'style',
@@ -68,9 +77,10 @@ closeBtn.appendChild(closeLast);
 
 list.appendChild(closeBtn);
 
-const queryParticipants: Array<string> = Array.from(
+const queryParticipants: Array<HTMLAnchorElement> = Array.from(
   document.querySelectorAll<HTMLAnchorElement>('#js-plan-quickfilters > dd a[title*="assignee = "]')
-).map((m) => m.innerHTML);
+);
+
 const staticParticipants = [
   'Thomas',
   'Anne',
@@ -93,7 +103,18 @@ const participants = (queryParticipants.length ? queryParticipants : staticParti
   .sort(() => Math.random() - 0.5)
   .forEach((participant) => {
     const li = document.createElement('li');
-    li.innerHTML = participant;
+
+    if (typeof participant === 'string') {
+      li.innerHTML = participant;
+    } else {
+      const participantAnchor = document.createElement('a');
+      participantAnchor.setAttribute('style', 'color: white');
+      participantAnchor.addEventListener('click', (e) => {
+        handleParticipantClick(queryParticipants, participant);
+      });
+      participantAnchor.innerHTML = participant.innerHTML;
+      li.appendChild(participantAnchor);
+    }
     list.appendChild(li);
   });
 

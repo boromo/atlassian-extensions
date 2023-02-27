@@ -1,9 +1,10 @@
 declare function dragElement(element: HTMLElement): void;
+declare function handleParticipantClick(allParticipants: Array<HTMLAnchorElement>, selectedParticipant: HTMLAnchorElement): void;
 declare const list: HTMLDivElement;
 declare const logo: HTMLImageElement;
 declare const closeBtn: HTMLDivElement;
 declare const closeFirst: HTMLSpanElement;
 declare const closeLast: HTMLSpanElement;
-declare const queryParticipants: Array<string>;
+declare const queryParticipants: Array<HTMLAnchorElement>;
 declare const staticParticipants: string[];
 declare const participants: void;
