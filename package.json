@@ -1,16 +1,32 @@
 {
-  "name": "jira-daily-candidates",
-  "version": "0.0.5",
+  "name": "atlassian-helpers",
+  "version": "0.0.6",
   "typings": "lib/main.d.ts",
   "scripts": {
-    "start": "parcel ./src/index.html",
-    "build": "tsc --outDir lib && npm run minify",
+    "clean-dist": "rm -rf dist && mkdir ./dist",
+    "copy-assets": "cp -r ./src/assets ./dist",
+    "copy-manifest": "cp -r ./src/manifest.json ./dist",
+    "init": "npm run clean-dist && npm run copy-files",
+    "copy-files": "npm run copy-assets & npm run copy-manifest",
+    "start": "npm run init && parcel ./src/popup.html ./src/scripts/content.ts",
+    "build": "npm run init && parcel build ./src/popup.html ./src/scripts/content.ts",
+    "build:lib": "tsc --outDir lib && npm run minify",
     "minify": "uglifyjs --compress --mangle --output lib/index.min.js -- lib/index.js"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
+    "@types/chrome": "^0.0.224",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
     "parcel": "latest",
+    "process": "^0.11.10",
     "typescript": "^4.9.5",
     "uglify-js": "^3.17.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
   }
 }

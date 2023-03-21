@@ -1,2 +1,3 @@
-# atlassian-extensions
-Set of usefull extensions for Atlassian tools
+# Atlassian helpers
+
+Set of useful extension tools for Atlassian

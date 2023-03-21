@@ -78,7 +78,7 @@ closeBtn.appendChild(closeLast);
 list.appendChild(closeBtn);
 
 const queryParticipants: Array<HTMLAnchorElement> = Array.from(
-  document.querySelectorAll<HTMLAnchorElement>('#js-plan-quickfilters > dd a[title*="assignee = "]')
+  document.querySelectorAll<HTMLAnchorElement>('dd a[title*="assignee ="]')
 );
 
 const staticParticipants = [
@@ -98,6 +98,7 @@ const staticParticipants = [
   'Milan',
   'Sarah',
 ];
+
 const participants = (queryParticipants.length ? queryParticipants : staticParticipants)
   .slice()
   .sort(() => Math.random() - 0.5)
