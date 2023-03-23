@@ -37,3 +37,21 @@ export async function selectParticipant(selectedParticipant: string) {
     });
   })
 }
+
+export async function colorizeIssues(colorizedIssues: boolean) {
+  return new Promise<boolean>((resolve, reject) => {
+    sendMessageToTab((tabs) => {
+      chrome.tabs.sendMessage<DOMMessage, boolean | undefined>(
+        tabs[0].id || 0,
+        { type: 'COLORIZE_ISSUES', colorizedIssues },
+        (response) => {
+          if (response) {
+            resolve(response);
+          } else {
+            console.log('failed to select');
+          }
+        }
+      );
+    });
+  });
+}

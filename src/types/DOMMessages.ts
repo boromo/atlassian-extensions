@@ -11,4 +11,9 @@ export interface DOMSelectParticipant {
   participant: string;
 }
 
-export type DOMMessage = DOMParticipants | DOMTickets | DOMSelectParticipant;
+export interface DOMColorizeIssues {
+  type: 'COLORIZE_ISSUES';
+  colorizedIssues: boolean;
+}
+
+export type DOMMessage = DOMParticipants | DOMTickets | DOMSelectParticipant | DOMColorizeIssues;
