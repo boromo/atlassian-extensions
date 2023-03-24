@@ -14,6 +14,7 @@
     "minify": "uglifyjs --compress --mangle --output lib/index.min.js -- lib/index.js"
   },
   "devDependencies": {
+    "@parcel/transformer-css": "^2.8.3",
     "@parcel/transformer-sass": "^2.8.3",
     "@types/chrome": "^0.0.224",
     "@types/react": "^18.0.28",
